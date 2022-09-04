@@ -56,7 +56,6 @@ public class Main {
 				lost = true;
 				break;
 			}
-			// draws at 2 squares left, idk why :/ TODO: FIX DRAW ISSUES
 			else if (!board[i][0].equals("*") && !board[i][1].equals("*") && !board[i][2].equals("*") && !board[0][i].equals("*") && !board[1][i].equals("*") && !board[2][i].equals("*")) {
 				draw = true;
 				break;
