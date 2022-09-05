@@ -122,7 +122,7 @@ public class Main {
 				r = (new Scanner(System.in)).nextInt();
 			}
 			catch (Exception e) {
-				System.out.println("You entered a string, not a number. Quitting");
+				System.out.println("You did enter not a number. Quitting");
 				System.exit(0);
 			}
 					
@@ -132,12 +132,13 @@ public class Main {
 				i = (new Scanner(System.in)).nextInt();
 			}
 			catch (Exception e) {
-				System.out.println("You entered a string, not a number. Quitting");
+				System.out.println("You did enter not a number. Quitting");
 				System.exit(0);
 			}
 			
 			if (r < 0 || r > 2 || i < 0 || i > 2) {
 				System.out.println("Input valid values!");
+				System.exit(0);
 			}
 			else {
 				System.out.println("OK");
