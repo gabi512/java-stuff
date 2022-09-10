@@ -5,6 +5,7 @@ package ticTacToe;
 
 import java.util.Scanner;
 import java.util.Random;
+import java.util.Arrays;
 
 public class Main {
 	/*
@@ -56,7 +57,18 @@ public class Main {
 				lost = true;
 				break;
 			}
-			else if (!board[i][0].equals("*") && !board[i][1].equals("*") && !board[i][2].equals("*") && !board[0][i].equals("*") && !board[1][i].equals("*") && !board[2][i].equals("*")) {
+			else if (
+						!board[0][0].equals("*")
+						&& !board[0][1].equals("*")
+						&& !board[0][2].equals("*")
+						&& !board[1][0].equals("*")
+						&& !board[1][1].equals("*")
+						&& !board[1][2].equals("*")
+						&& !board[2][0].equals("*")
+						&& !board[2][1].equals("*")
+						&& !board[2][2].equals("*")
+						&& !lost && !won
+					) {
 				draw = true;
 				break;
 			}
@@ -89,6 +101,8 @@ public class Main {
 		}
 		
 		printBoard(board);
+		
+		checkLoss(player, computer, board);
 	}
 	
 	// prints board
@@ -122,7 +136,7 @@ public class Main {
 				r = (new Scanner(System.in)).nextInt();
 			}
 			catch (Exception e) {
-				System.out.println("You did enter not a number. Quitting");
+				System.out.println("You did not enter a number. Quitting");
 				System.exit(0);
 			}
 					
@@ -132,13 +146,12 @@ public class Main {
 				i = (new Scanner(System.in)).nextInt();
 			}
 			catch (Exception e) {
-				System.out.println("You did enter not a number. Quitting");
+				System.out.println("You did not enter a number. Quitting");
 				System.exit(0);
 			}
 			
 			if (r < 0 || r > 2 || i < 0 || i > 2) {
 				System.out.println("Input valid values!");
-				System.exit(0);
 			}
 			else {
 				System.out.println("OK");
@@ -147,9 +160,11 @@ public class Main {
 			board[r][i] = player;
 			printBoard(board);
 			
-			computerMove(board, computer, player);
-			
 			checkLoss(player, computer, board);
+			
+			if (!lost && !draw && !won) {
+				computerMove(board, computer, player);
+			}
 		}
 		
 		if (won) {
